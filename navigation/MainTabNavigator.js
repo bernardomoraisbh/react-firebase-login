@@ -1,9 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import ClienteScreen from '../screens/ClienteScreen';
 import GerenteScreen from '../screens/GerenteScreen';
 
 const config = Platform.select({
@@ -12,15 +14,15 @@ const config = Platform.select({
 });
 
 /* Tela Inicial Cliente */
-const HomeStack = createStackNavigator(
+const ClienteStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Cliente: ClienteScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+ClienteStack.navigationOptions = {
+  tabBarLabel: 'Cliente',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -33,7 +35,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+ClienteStack.path = '';
 /* Fim Tela Inicial Cliente*/
 
 /* Tela Inicial Gerente */
@@ -54,8 +56,8 @@ GerenteStack.navigationOptions = {
 GerenteStack.path = '';
 /*Fim Tela Inicial Gerente */
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+const tabNavigator = createMaterialTopTabNavigator({
+  ClienteStack,
   GerenteStack,
 });
 
